@@ -1,0 +1,175 @@
+var express = require("express");
+var router = express.Router();
+passport 				= require("passport"),
+localStrategy 			= require("passport-local"),
+passportLocalMongoose 	= require("passport-local-mongoose");
+
+//RESTFULL ROUTES
+var User = require("../models/user");
+var StudentRegistration = require("../models/register");
+
+//INDEX ROUTES
+router.get("/", function(req, res){
+	res.render("index");
+});
+
+//NEW ROUTES
+
+router.get("poli/new", function(req, res){
+	res.render("register");
+
+})
+
+
+//CREATE ROUTES
+router.post("poli/new", function(req, res){ 
+
+	var thisyr = new Date().getFullYear().toString().substr(2, 3);
+	var level = req.body.level;
+	var student_id = thisyr + "/PSS/" + level + "/";
+
+	StudentRegistration.find({ username: {$regex: student_id, $options: "i" }}, function(err, student){
+/*		function isEmpty(student) {
+		    for(var prop in student) {
+		        if(student.hasOwnProperty(prop))
+		            return false;
+		    }
+
+		    return true;
+		}*/
+			var thisyr = new Date().getFullYear().toString().substr(2, 3);
+			var level = req.body.level;
+			var student_id = thisyr + "/PSS/" + level + "/";
+	
+		console.log(student);
+		if (!(student === undefined || student.length == 0)) {
+			var foundData = [];
+			student.forEach(function(data){
+				var cut = parseInt(data.username.substr(10, 12));
+				foundData.push(cut);
+			});
+
+			var last = addZ(Math.max(...foundData) + 1);
+
+			var student_id = student_id + last.toString();
+		}else {
+			console.log(student_id);
+			var student_id = student_id + "001";
+		}
+
+
+	
+
+		var newData = { 
+			firstname: req.body.firstname,
+			secondname: req.body.secondname,
+			othername: req.body.othername,
+			nickname: req.body.nickname,
+			gender: req.body.gender,
+			level: req.body.level,
+			parentname: req.body.parentname,
+			image: req.body.image,
+			username: student_id
+		 }
+
+		StudentRegistration.create(newData, function(err, newRegister){
+			if (err) {
+				console.log(err);
+			}else{
+				console.log(newRegister);
+			
+				res.redirect('/register/'+ newRegister._id);
+			}
+		});
+ 
+	});	
+
+});
+
+//SHOW ROUTES
+router.get("/poli/:id", function(req ,res){
+
+	StudentRegistration.findById(req.params.id, function(err, student){
+		if (err) {
+			console.log(err);
+		}else{
+			console.log(student);
+			res.render("poli", {student: student});
+		}
+	});
+	
+});
+
+//EDIT ROUTES
+
+//UPDATE ROUTES
+
+//DELETE ROUTES
+
+router.get("/register/:id", function(req, res){
+	StudentRegistration.findById(req.params.id, function(err, studentData){
+		if (err) {
+			console.log(err);
+		}else{
+			res.render("register", {studentData: studentData});
+		}
+		
+	});
+	
+});
+
+
+router.get("poli/login", function(req, res){
+	res.render("login");
+});
+
+
+/*	passport.authenticate("local")(req, res, function(){
+		res.redirect("/profile/" + student.id);
+	});*/
+
+router.post('poli/login',
+  passport.authenticate('local'),
+  function(req, res) {
+   User.findById(req.user.id).populate("StudentRegistration").exec(function(err, student){	
+		if(err){
+			console.log(err);
+		}else{
+			/*console.log(student.StudentRegistration[0].id);*/
+			console.log("===================");
+			console.log(student._id);
+			 res.redirect('/poli/' + student.StudentRegistration[0].id);			
+		}
+
+	});
+
+  });
+
+router.get("poli/logout", function(req, res){
+	req.logout();
+	res.redirect("/");
+});
+
+//register student routes
+
+
+
+
+
+
+
+
+
+
+function isLoggedIn(req, res, next){
+	if (req.isAuthenticated()) {
+		return next();
+	}
+	res.redirect("/login");
+}
+
+function addZ(n) {
+  return (n<10? '00' : n<100? '0' : '') + n;
+}
+
+module.exports=  router;

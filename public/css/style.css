@@ -1,0 +1,32 @@
+.item.side{
+	height: 10vh;
+	font-size: 18px;
+}
+
+.item.side.logo{
+	height: 11.5vh;
+	font-weight: 400;
+	font-size: 30px;
+	text-align: center;
+	border: none;
+	margin: auto 0;
+}
+
+.ui.grid{
+	padding: 25vh 5vh 0 5vh;
+}
+
+.header{
+	padding: 5px;
+	
+}
+
+
+.menu{
+	font-size: 16px;
+}
+
+#anim{
+	max-width: 500px;
+	margin: 0 auto;
+}

@@ -1,0 +1,54 @@
+
+<%- include('partials/header')-%>
+
+
+
+
+<div class="pusher">
+    <div class="ui grid">
+
+<div class="container">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2 class="panel-title"><strong>Senior Secondary School Courses (Management)</strong></h2></div>
+            <div class="panel-body">
+         <form action="/register/jscourse/<%=id%>" method="POST">
+
+          <h4><strong>Compulsory</strong></h4>
+          <ul>
+            <%for(var i = 0; i < compulsory.length; i++) {%>
+              <li> <%=compulsory[i]%></li>
+            <%}%>
+          </ul>
+          <hr>
+          <h4><strong>Basic Science and Maths</strong></h4>
+          <%for(var i = 0; i < basic_science_and_maths.length; i++) {%>
+              <input type="radio" name="basic_science_and_maths", value="<%=basic_science_and_maths[i]%>"> <%=basic_science_and_maths[i]%>
+            <%}%>
+            <hr>
+          <h4><strong>Technical and Agricultural</strong></h4>
+          <%for(var i = 0; i < technical_and_agricultural.length; i++) {%>
+              <input type="radio" name="technical_and_agricultural", value="<%=technical_and_agricultural[i]%>"> <%=technical_and_agricultural[i]%>
+            <%}%>
+            <hr>
+          <h4><strong>Liberal Arts and Social Science</strong></h4>
+          <%for(var i = 0; i < liberal_arts_and_social_science.length; i++) {%>
+              <input type="radio" name="nigerian_language", value="<%=liberal_arts_and_social_science[i]%>"> <%=liberal_arts_and_social_science[i]%>
+            <%}%>
+            <br>
+            <br>
+          <button type="submit" class="btn btn-sm btn-default">Submit</button>
+        </form> 
+        </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<%- include('partials/footer')-%>
+
+
+

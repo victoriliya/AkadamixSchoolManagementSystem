@@ -1,0 +1,156 @@
+<%- include('partials/header')-%>
+
+
+<div class="ui vertical left visible sidebar menu "> 
+  <a class="active item side logo">
+    Akadamix
+  </a>
+  <div class="item side">
+    
+  </div>
+
+  <a class="active item side">
+    <i class="id badge icon"></i>
+    Profile
+  </a>
+
+  <a class="item side">
+    <i class="file alternate icon"></i>
+    View Result
+  </a>
+
+  <a class="item side">
+    <i class="credit card icon"></i>
+    Pay Schoolfees
+  </a>
+
+  <a class="item side">
+    <i class="calendar alternate icon"></i>
+    Calenders
+  </a>
+
+</div>
+
+
+
+<div class="pusher">
+	<div class="ui grid">
+
+
+	<div class="container">
+	    <div class="col-md-12">
+
+	    <div class="row">
+	    
+		    <div class="col">
+			<div id="anim">
+				
+		    </div>
+		    <div class="col">
+		      	<div class="col-md-4">
+				
+<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_TvLR5m.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
+	    	</div>
+	    	<div class="col-md-4">
+	    		<div class="ui celled list">
+	    		<h4><strong>Student profile</strong></h4>
+				   <div class="item">
+				    <div class="content">
+				      <div class="header"><%=student.firstname%> <%=student.secondname%>, <%=student.othername%></div>
+				    </div>
+				   </div>
+				   <div class="item">
+				    <div class="content">
+				      <div class="header"><%=student.nickname%></div>
+				    </div>
+				  </div>
+				  <div class="item">
+				    <div class="content">
+				      <div class="header">ID: <%=student.username%></div>
+				    </div>
+				  </div>
+				  <div class="item">
+				    <div class="content">
+				      <div class="header">DOB: 03/03/2000</div>
+				    </div>
+				  </div>
+				  <div class="item">
+				    <div class="content">
+				      <div class="header">Gender: <%=student.gender%></div>
+				    </div>
+				  </div>
+				  <div class="item">
+				    <div class="content">
+				      <div class="header">Level: <%=student.level%></div>
+				    </div>
+				  </div>
+				    <div class="item">
+				    <div class="content">
+				      <div class="header">Enroll. Date: 2011</div>
+				    </div>
+				  </div>
+				    <div class="item">
+				    <div class="content">
+				      <div class="header">Parent: <%=student.parentname%></div>
+				    </div>
+				  </div>
+
+				</div>
+
+			    </div>
+			    	</div>
+			    </div>
+			</div>
+			</div>
+		 </div>
+	    	
+
+
+	<div class="row">
+		
+			<div class="col-md-4">
+    		<div class="ui celled list">
+				<br>
+				
+			   <h4><strong>Subjects</strong></h4>
+				  <div class="item">
+				  	
+				  	<div class="content">
+				      <%for (var i = 0; i < compulsory.length; i++) {%>
+				      	<div class="header"><%=compulsory[i]%></div>
+				      <%}%>
+				    </div>
+
+				  	<div class="content">
+				      <%for (var i = 0; i < category_one.length; i++) {%>
+				      	<div class="header"><%=category_one[i]%></div>
+				      <%}%>
+				    </div>
+
+				  	<div class="content">
+				      <%for (var i = 0; i < category_two.length; i++) {%>
+				      	<div class="header"><%=category_two[i]%></div>
+				      <%}%>
+				    </div>
+
+				    <div class="content">
+				      <%for (var i = 0; i < category_three.length; i++) {%>
+				      	<div class="header"><%=category_three[i]%></div>
+				      <%}%>
+				    </div>
+				  </div>
+				 
+			</div>
+			</div>
+		 </div>
+	    	
+	    	
+	</div>
+	
+
+</div>
+
+<%- include('partials/footer')-%>
+
+
+

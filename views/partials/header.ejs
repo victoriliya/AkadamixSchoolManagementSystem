@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Acadamamiks</title>
+	<link rel="stylesheet" href="/css/semantic.min.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body>
+
+
+
+	<div class="ui fixed segment menu">
+
+		<a class="active item" href="/">Akadamiks</a> 
+	  
+	  <div class="ui right secondary menu">
+	  	
+	  		<div class="menu">
+			<%if(!currentUser){%>
+		  		<a class="item" href="/poli/new">Register</a>
+		  		<a class="item" href="/poli/login">Login</a>
+			<%}else{%>
+				<a class="item" href="#">Signed In As <%=currentUser.username%> </a>
+				<a class="item" href="/poli/logout">Logout</a>
+			<% } %>
+	  		</div>
+	    	
+	  </div>
+	</div>

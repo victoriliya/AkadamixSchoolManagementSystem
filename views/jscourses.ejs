@@ -1,0 +1,53 @@
+
+<%- include('partials/header')-%>
+
+
+
+
+<div class="pusher">
+    <div class="ui grid">
+<div class="container">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2 class="panel-title"><strong>Junior Secondary School Courses</strong></h2></div>
+            <div class="panel-body">
+        <form action="/register/jscourse/<%=id%>" method="POST">
+
+          <h5><strong>Compulsory</strong></h5>
+          <ul>
+            <%for(var i = 0; i < compulsory.length; i++) {%>
+              <li> <%=compulsory[i]%>  </li>
+            <%}%>
+          </ul>
+          <hr>
+          <h5><strong>Sport/Recreation</strong><h5>
+          <%for(var i = 0; i < sport_recreation.length; i++) {%>
+              <input type="radio" name="sport_recreation", value="<%=sport_recreation[i]%>"> <%=sport_recreation[i]%>  
+            <%}%>
+            <hr>
+          <h5><strong>Religion</strong></h5>
+          <%for(var i = 0; i < religion.length; i++) {%>
+              <input type="radio" name="religion", value="<%=religion[i]%>"> <%=religion[i]%>  
+            <%}%>
+            <hr>
+          <h5><strong>Nigerian Language</strong></h5>
+          <%for(var i = 0; i < nigerian_language.length; i++) {%>
+              <input type="radio" name="nigerian_language", value="<%=nigerian_language[i]%>"> <%=nigerian_language[i]%>
+            <%}%>
+            <br>
+            <br>
+
+          <button type="submit" class="btn btn-sm btn-default">Submit</button>
+        </form> 
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<%- include('partials/footer')-%>
+
+
+

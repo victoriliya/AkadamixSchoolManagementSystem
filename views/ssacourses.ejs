@@ -1,0 +1,58 @@
+
+<%- include('partials/header')-%>
+
+
+
+
+<div class="pusher">
+    <div class="ui grid">
+
+<div class="container">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2 class="panel-title"><strong>Senior Secondary School Courses (Management)</strong></h2></div>
+            <div class="panel-body">
+        <form action="/register/jscourse/<%=id%>" method="POST">
+         <h1>Junior Secondary School Courses</h1> 
+         compulsory: compulsory, commercial: commercial, technical_and_agricultural: technical_and_agricultural, liberal_arts_and_social_science: liberal_arts_and_social_science, id: req.params.id});
+      
+
+          <h4><strong>Compulsory</strong></h4>
+          <ul>
+            <%for(var i = 0; i < compulsory.length; i++) {%>
+              <li><%=compulsory[i]%></li>
+            <%}%>
+          </ul>
+
+          <br>
+
+          <h4><strong>Commercial</strong></h4>
+          <%for(var i = 0; i < commercial.length; i++) {%>
+              <input type="radio" name="commercial", value="<%=commercial[i]%>"><%=commercial[i]%>
+            <%}%>
+          <hr>
+          <h4><strong>Technical and Agricultural</strong></h4>
+          <%for(var i = 0; i < technical_and_agricultural.length; i++) {%>
+              <input type="radio" name="technical_and_agricultural", value="<%=technical_and_agricultural[i]%>"><%=technical_and_agricultural[i]%>
+            <%}%>
+            <hr>
+            
+          <h4><strong>Liberal Arts and Social Science</strong></h4>
+          <%for(var i = 0; i < liberal_arts_and_social_science.length; i++) {%>
+              <input type="radio" name="liberal_arts_and_social_science", value="<%=liberal_arts_and_social_science[i]%>"><%=liberal_arts_and_social_science[i]%>
+            <%}%>
+          
+          <br>
+          <button type="submit" class="btn btn-sm btn-default">Submit</button>
+        </form> 
+
+
+
+
+    </div>
+</div>
+
+<%- include('partials/footer')-%>
+
+
+
